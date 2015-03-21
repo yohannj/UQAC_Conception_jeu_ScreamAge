@@ -1,0 +1,41 @@
+1-Character controls - Jordan
+	Buidling
+	Enhancement
+	Reload
+	Sprite
+	Animation
+1-Character stats - Yohann -> Done
+	Movement speed
+	Building speed
+	Enhancement/reload speed
+2-Levelling
+	XP - Yohann -> Done
+	End Game Screen
+		Stats attribution
+1-Map - Gab
+1-Enemies
+	Fear - Yohann
+	Pathfinding - Yohann
+	Sprite
+	Animations
+2-Gameplay phases
+2-Victory condition
+	Win Screen
+2-Defeat Condition
+	Level Reset
+1-Towers - Francis
+	Ball Launcher
+	Totem
+	Death Portal
+	Sprite
+	Animations
+3-Tower radius upgrade
+3-Level progression
+3-UI
+	Tower Selection
+	Action Pop-up
+2-Music and sound
+2-Name
+3-Character choice
+4-Enemy Types
+5-Level Selector

@@ -1,0 +1,33 @@
+Initialize engine version: 4.6.3f1 (4753d8b6ef2b)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: AMD Radeon R9 200 Series (ID=0x6810)
+    Vendor:   ATI
+    VRAM:     2027 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: E:\Program Files\bureau\Cours UQAC\GameJam-2015-02-27\GameJamH15\ScreamAge_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading E:\Program Files\bureau\Cours UQAC\GameJam-2015-02-27\GameJamH15\ScreamAge_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: E:\Program Files\bureau\Cours UQAC\GameJam-2015-02-27\GameJamH15\ScreamAge_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading E:\Program Files\bureau\Cours UQAC\GameJam-2015-02-27\GameJamH15\ScreamAge_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: E:\Program Files\bureau\Cours UQAC\GameJam-2015-02-27\GameJamH15\ScreamAge_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading E:\Program Files\bureau\Cours UQAC\GameJam-2015-02-27\GameJamH15\ScreamAge_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.062 seconds
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+Platform assembly: E:\Program Files\bureau\Cours UQAC\GameJam-2015-02-27\GameJamH15\ScreamAge_Data\Managed\System.Core.dll (this message is harmless)
+WARNING: Shader Unsupported: 'Hidden/Nature/Tree Creator Leaves Optimized' - Pass '' shader state not supported
+WARNING: Shader Unsupported: 'Hidden/TerrainEngine/Details/BillboardWavingDoublePass' - Pass '' shader state not supported
+Platform assembly: E:\Program Files\bureau\Cours UQAC\GameJam-2015-02-27\GameJamH15\ScreamAge_Data\Managed\System.dll (this message is harmless)
+UnloadTime: 3.847754 ms
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 1059.
+Total: 2.286126 ms (FindLiveObjects: 0.143658 ms CreateObjectMapping: 0.022029 ms MarkObjects: 0.353096 ms  DeleteObjects: 0.991957 ms)
+
+WARNING: Shader Unsupported: 'Hidden/TerrainEngine/Details/BillboardWavingDoublePass' - Pass '' shader state not supported
+Look rotation viewing vector is zero
+ 
+(Filename:  Line: 70)
+
