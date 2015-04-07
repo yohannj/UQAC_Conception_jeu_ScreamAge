@@ -42,6 +42,8 @@ public abstract class Towers : MonoBehaviour
 
     protected GameObject player;
 
+	public GameObject towerUI;
+
     protected abstract void Start();
 
     // Update is called once per frame
@@ -86,6 +88,20 @@ public abstract class Towers : MonoBehaviour
             }
         }
     }
+
+	void OnGUI()
+	{
+		bool showHint = transform.FindChild ("Spotlight").GetComponent<Light> ().enabled;
+		
+		//sert a ce que le canvas fasse toujours face a la caméra
+		towerUI.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward, Camera.main.transform.up);
+		
+		if (showHint) {
+			towerUI.SetActive(true);
+		} else {
+			towerUI.SetActive(false);
+		}
+	}
 
     protected abstract void Shoot();
 
