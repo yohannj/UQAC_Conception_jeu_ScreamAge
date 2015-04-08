@@ -4,6 +4,8 @@ using System.Collections;
 public class MenuController : MonoBehaviour {
 
 	private bool axis2InUse = false;
+	float joysticTime = 0;
+	float joysticFreezeTime = 0.25f;
 	GameObject player;
 
 	// Use this for initialization
@@ -50,21 +52,24 @@ public class MenuController : MonoBehaviour {
 				transform.GetComponent<EndGameMenu>().changeMenu();
 		}
 
-		if (Input.GetAxis("HDPad") < 0 || Input.GetKeyDown(KeyCode.A)) {
+		joysticTime = joysticTime + Time.deltaTime;
+		if ((Input.GetAxis("HDPad") < 0 || Input.GetKeyDown(KeyCode.A) || Input.GetAxis("Horizontal") < 0) && joysticTime > joysticFreezeTime ){
+			joysticTime = 0;
 			if(!axis2InUse){
 				transform.GetComponent<EndGameMenu>().changePos(-1);
 				axis2InUse = true;
 			}
 		}
-        if (Input.GetAxis("HDPad") > 0 || Input.GetKeyDown(KeyCode.D))
-        {
+		if ((Input.GetAxis ("HDPad") > 0 || Input.GetKeyDown (KeyCode.D) || Input.GetAxis("Horizontal") > 0) && joysticTime > joysticFreezeTime){
+			joysticTime = 0;
 			if(!axis2InUse){
 				transform.GetComponent<EndGameMenu>().changePos(1);
 				axis2InUse = true;
 			}
 		}
-		if (Input.GetAxis ("HDPad") == 0) {
+		if (Input.GetAxis ("HDPad") == 0 && Input.GetAxis("Horizontal") == 0) {
 			axis2InUse = false;
 		}
 	}
 }
+

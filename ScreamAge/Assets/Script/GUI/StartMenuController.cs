@@ -7,7 +7,9 @@ public class StartMenuController : MonoBehaviour
     bool VDPadInUse = false;
     bool HDPadInUse = false;
     bool newCharGUI = false;
-    bool controlGUI = false;
+	bool controlGUI = false;
+	float joysticTime = 0;
+	float joysticFreezeTime = 0.25f;
     StartMenu sm;
 
     // Use this for initialization
@@ -69,41 +71,44 @@ public class StartMenuController : MonoBehaviour
             newCharGUI = false;
         }
 
-        if (Input.GetAxis("VDPad") < 0)
-        {
-            if (!VDPadInUse && !controlGUI && !newCharGUI)
-            {
-				AudioManager.instance.playMenuShiftSound();
-				sm.changePos(1);
-                VDPadInUse = true;
-            }
-        }
-        if (Input.GetAxis("VDPad") > 0)
-        {
-            if (!VDPadInUse && !controlGUI && !newCharGUI)
-            {
+		joysticTime += Time.deltaTime;
+		
+		if ((Input.GetAxis ("VDPad") < 0 || Input.GetAxis ("Vertical") < 0) && joysticTime > joysticFreezeTime) {
+			joysticTime = 0;
+			if (!VDPadInUse && !controlGUI && !newCharGUI) {
+				AudioManager.instance.playMenuShiftSound ();
+				sm.changePos (1);
+				VDPadInUse = true;
+			}
+		}
+		if ((Input.GetAxis("VDPad") > 0 || Input.GetAxis("Vertical") > 0 )&& joysticTime > joysticFreezeTime)
+		{
+			joysticTime = 0;
+			if (!VDPadInUse && !controlGUI && !newCharGUI)
+			{
 				AudioManager.instance.playMenuShiftSound();
 				sm.changePos(-1);
-                VDPadInUse = true;
-            }
-        }
-        if (Input.GetAxis("VDPad") == 0)
-        {
-            VDPadInUse = false;
-        }
-
-        if (Input.GetAxis("HDPad") != 0)
-        {
-            if (!HDPadInUse && newCharGUI)
-            {
+				VDPadInUse = true;
+			}
+		}
+		if (Input.GetAxis("VDPad") == 0 && Input.GetAxis("Vertical") == 0)
+		{
+			VDPadInUse = false;
+		}
+		
+		if ((Input.GetAxis("HDPad") != 0 || Input.GetAxis("Horizontal") != 0) && joysticTime > joysticFreezeTime)
+		{
+			joysticTime = 0;
+			if (!HDPadInUse && newCharGUI )
+			{
 				AudioManager.instance.playMenuShiftSound();
 				sm.changePosSubMenu();
-                HDPadInUse = true;
-            }
-        }
-        if (Input.GetAxis("HDPad") == 0)
-        {
-            HDPadInUse = false;
-        }
-    }
+				HDPadInUse = true;
+			}
+		}
+		if (Input.GetAxis("HDPad") == 0 && Input.GetAxis("Horizontal") == 0)
+		{
+			HDPadInUse = false;
+		}
+	}
 }

@@ -190,7 +190,7 @@ public class GameMaster : MonoBehaviour
     //Show endgame, pause game
     private void EndLevel()
     {
-        Time.timeScale = 0; //pause game
+		//Time.timeScale = 0; //pause game -- supprimé car besoin de deltatime dans le menuController (julien)
         playerRef.SetActive(false);
 
         endGameMenu.Display();
