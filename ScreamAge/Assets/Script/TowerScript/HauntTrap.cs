@@ -27,7 +27,6 @@ public class HauntTrap : Towers {
         targets = new HashSet<Transform>();
         fear_damage = 100.0f;
 
-        level = 1;
         sc = transform.GetChild(0).GetComponent<SphereCollider>();
         sc.radius = base_radius;
         reload_time = base_reload_time;
@@ -92,7 +91,6 @@ public class HauntTrap : Towers {
 
     public override void upgrade()
     {
-        ++level;
         isEnhancing = true;
         float ratio = (level - 1) / (maxLevel - 1);
         fear_damage = baseFearDamage + (maxFearDamage - baseFearDamage )* ratio;

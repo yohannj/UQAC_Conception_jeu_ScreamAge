@@ -17,9 +17,6 @@ public class Totem : Towers {
         base_reload_time = 1;
         base_enhance_time = 2;
         targets = new HashSet<Transform>();
-        //fear_damage = 10;
-
-        level = 1;
         sc = transform.GetChild(0).GetComponent<SphereCollider>();
         sc.radius = base_radius;
         reload_time = base_reload_time;
@@ -45,11 +42,9 @@ public class Totem : Towers {
 
     public override void upgrade()
     {
-        ++level;
         isEnhancing = true;
         float ratio = (level - 1) / (maxLevel - 1);
         sc.radius = base_radius + (max_radius - base_radius) * ratio;
         reload_time = base_reload_time + (min_reload_time - base_reload_time) * ratio;
-		transform.GetComponent<ParticleSystem> ().startSpeed += 0.4f;
     }
 }

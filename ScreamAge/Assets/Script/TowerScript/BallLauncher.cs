@@ -28,7 +28,6 @@ public class BallLauncher : Towers
         targets = new HashSet<Transform>();
         fear_damage = 0;
 
-        level = 1;
         sc = transform.GetChild(0).GetComponent<SphereCollider>();
         selectTargetRadius = base_radius;
         sc.radius = 200;
@@ -111,7 +110,6 @@ public class BallLauncher : Towers
 
     public override void upgrade()
     {
-        ++level;
         isEnhancing = true;
         float ratio = (level - 1) / (maxLevel - 1);
         selectTargetRadius = base_radius + (max_radius - base_radius) * ratio;

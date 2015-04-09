@@ -31,13 +31,13 @@ public abstract class Towers : MonoBehaviour
     protected float min_reload_time;
     protected float base_radius;
 
-    protected float level;
+	protected float level = 0;
     protected float reload_time;
     protected float next_attack_time;
     protected HashSet<Transform> targets;
 
     [SerializeField]
-    protected float fear_damage;
+	protected float fear_damage = 10;
     protected SphereCollider sc;
 
     protected GameObject player;
@@ -56,6 +56,8 @@ public abstract class Towers : MonoBehaviour
             if (getBuildPercent() >= 1)
             {
                 isBuilt = true;
+				AudioManager.instance.playBuildSound();
+				level++;
             }
         }
 
@@ -66,18 +68,24 @@ public abstract class Towers : MonoBehaviour
             {
                 currentReloadTime = 0;
                 isReloading = false;
+				AudioManager.instance.playReloadSound();
             }
         }
 
-        if (isEnhancing)
-        {
-            currentEnhanceTime += Time.deltaTime;
-            if (getEnhancePercent() >= 1)
-            {
-                currentEnhanceTime = 0;
-                isEnhancing = false;
-            }
-        }
+		if (isEnhancing) {
+			ParticleSystem particles = transform.GetComponent<ParticleSystem> ();
+			particles.Stop ();
+			particles.Clear();
+			
+			currentEnhanceTime += Time.deltaTime;
+			if (getEnhancePercent () >= 1) {
+				currentEnhanceTime = 0;
+				isEnhancing = false;
+				AudioManager.instance.playEnhanceSound ();
+				transform.GetComponent<ParticleSystem> ().Play();
+				++level;
+			}
+		} 
 
         if (isBuilt && !isReloading && !isEnhancing)
         {
