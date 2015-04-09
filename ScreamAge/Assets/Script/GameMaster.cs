@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 /*<summary>
  * Game's central entity. Is a singleton.
@@ -38,6 +39,11 @@ public class GameMaster : MonoBehaviour
 
     public GameObject guiGO;
     public GameObject endGameMenuGO;
+
+	//variables du upLeftMenu
+	public Text levelTxt, detailTxt; 
+
+
     private ConstructionGUI gui;
     private EndRoundScreenScript endGameMenu;
 
@@ -63,6 +69,11 @@ public class GameMaster : MonoBehaviour
 
     private GameObject playerRef;
     private GameObject light;
+
+
+
+
+
 
     void Awake()
     {
@@ -139,6 +150,17 @@ public class GameMaster : MonoBehaviour
 
             EndLevel();
         }
+
+		//gestion du menu en haut a gauche
+		if (enemiesLeft > 0 || currentGamePhase.Equals("Day"))
+		{
+			levelTxt.text = "Level " + (currentLevel + 1);
+			if (currentGamePhase.Equals("Day"))
+				detailTxt.text = "Night in: " + dayCountDown.ToString("0");
+			else
+				detailTxt.text = "Scared: " + nb_enemy_scared + "/" + enemyTotal + "\nLeft to spawn: " + (enemyTotal - enemiesSpawned);
+		}
+
     }
 
     public void StartNextLevel(int lv) // lv in range[0,1]
@@ -260,25 +282,5 @@ public class GameMaster : MonoBehaviour
     public float getLifeLeft()
     {
         return life_left;
-    }
-
-    public void OnGUI()
-    {
-        if (enemiesLeft > 0 || currentGamePhase.Equals("Day"))
-        {
-            GUIStyle gs = new GUIStyle(GUI.skin.box);
-            gs.alignment = TextAnchor.MiddleCenter;
-            gs.richText = true;
-            string timerText = "<size=22>Level " + (currentLevel + 1) + "</size>\n\n";
-            if (currentGamePhase.Equals("Day"))
-            {
-                timerText += "Night in: " + dayCountDown.ToString("0");
-            }
-            else
-            {
-                timerText += "Scared: " + nb_enemy_scared + "/" + enemyTotal + "\nLeft to spawn: " + (enemyTotal - enemiesSpawned);
-            }
-            GUI.Box(new Rect(10, 10, 115, 90), timerText, gs);
-        }
     }
 }
